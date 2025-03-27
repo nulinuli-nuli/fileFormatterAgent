@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本格式转换服务</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>文本格式转换服务</h1>
+        
+        <div class="tabs">
+            <div class="tab active" data-target="text-tab">文本转换</div>
+            <div class="tab" data-target="file-tab">文件转换</div>
+        </div>
+        
+        <!-- 文本转换标签页 -->
+        <div id="text-tab" class="tab-content active">
+            <div class="card">
+                <form id="text-form">
+                    <div class="form-group">
+                        <label for="text-content">输入文本内容:</label>
+                        <textarea id="text-content" placeholder="请输入需要转换格式的文本..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="text-format-instruction">格式转换要求:</label>
+                        <textarea id="text-format-instruction" placeholder="请描述您希望的格式转换要求，例如：'将文本转换为JSON格式，每行作为一个对象，第一列为id，第二列为name'..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="api-key">API密钥:</label>
+                        <input type="password" id="api-key" placeholder="请输入API密钥" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-api-url">API URL:</label>
+                        <input type="text" id="api-url" placeholder="请输入API URL" value="https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="model-name">模型名称:</label>
+                        <select id="model-name" required>
+                            <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                            <option value="gpt-4">gpt-4</option>
+                            <option value="qwen-plus">qwen-plus</option>
+                            <!-- 可以根据需要添加更多选项 -->
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">转换</button>
+                </form>
+            </div>
+            
+            <div id="text-loader" class="loader"></div>
+            
+            <div id="text-result-container" class="result-container" style="display: none;">
+                <div class="card">
+                    <div class="result-header">
+                        <h2>转换结果</h2>
+                        <button id="download-text-btn" class="btn btn-success">下载结果</button>
+                    </div>
+                    <div id="text-result" class="result-content"></div>
+                </div>
+                
+                <div class="card script-container">
+                    <h2>生成的脚本</h2>
+                    <pre id="script-content" class="result-content"></pre>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 文件转换标签页 -->
+        <div id="file-tab" class="tab-content">
+            <div class="card">
+                <form id="file-form">
+                    <div class="form-group">
+                        <label for="file-input">选择文件:</label>
+                        <div class="file-input-container">
+                            <div class="file-input-label">点击选择文件或拖拽文件到此处</div>
+                            <input type="file" id="file-input" required>
+                        </div>
+                        <div id="file-name" class="file-name">未选择文件</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-format-instruction">格式转换要求:</label>
+                        <textarea id="file-format-instruction" placeholder="请描述您希望的格式转换要求，例如：'将CSV文件转换为JSON格式，第一行作为键名'..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-api-key">API密钥:</label>
+                        <input type="password" id="file-api-key" placeholder="请输入API密钥" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-api-url">API URL:</label>
+                        <input type="text" id="file-api-url" placeholder="请输入API URL" value="https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="file-model-name">模型名称:</label>
+                        <select id="file-model-name" required>
+                            <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                            <option value="gpt-4">gpt-4</option>
+                            <option value="qwen-plus">qwen-plus</option>
+                            <!-- 可以根据需要添加更多选项 -->
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">转换</button>
+                </form>
+            </div>
+            
+            <div id="file-loader" class="loader"></div>
+            
+            <div id="file-result-container" class="result-container" style="display: none;">
+                <div class="card">
+                    <div class="result-header">
+                        <h2>转换结果</h2>
+                        <button id="download-file-btn" class="btn btn-success">下载结果</button>
+                    </div>
+                    <div id="file-result" class="result-content"></div>
+                </div>
+                
+                <div class="card script-container">
+                    <h2>生成的脚本</h2>
+                    <pre id="file-script-content" class="result-content"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 

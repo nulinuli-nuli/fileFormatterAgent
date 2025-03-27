@@ -1,0 +1,12 @@
+logs/
+.idea
+__pycache__
+.vscode
+.gitignore
+.git
+.env
+venv/
+uploads/
+outputs/
+logs/
+
