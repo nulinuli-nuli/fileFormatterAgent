@@ -40,21 +40,10 @@ cd fileFormatterAgentServer
 pip install -r requirements.txt
 ```
 
-3. 创建并配置环境变量
-
-将`.env.example`文件复制为`.env`，然后填入您的API密钥和其他配置信息：
-
-```bash
-cp .env .env
-```
-
-编辑`.env`文件，填入您的OpenAI API密钥：
 
 ```
-OPENAI_API_KEY=your_openai_api_key_here
-```
 
-4. 启动服务器
+3. 启动服务器
 
 ```bash
 python main.py
@@ -99,7 +88,6 @@ fileFormatterAgentServer/
 ├── scripts/                # 生成的Python脚本
 ├── uploads/                # 上传的文件
 ├── outputs/                # 生成的输出文件
-├── .env.example            # 环境变量示例
 ├── main.py                 # 主程序入口
 ├── README.md               # 项目说明
 └── requirements.txt        # 项目依赖
